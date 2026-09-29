@@ -10,16 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     container: node:20-alpine
     steps:
-      - name: Check out
+      - name: Checkout
         uses: actions/checkout@v3
-
       - name: Install dependencies
-        uses: |
+        run: |
           npm ci
-
       - name: Lint with ESLint
-        uses: |
+        run: |
           npm run lint
-          
       - name: Run unit tests with Jest
-        uses: npm test -- --coverage
+        run: npm test -- --coverage
